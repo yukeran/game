@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩游戏选择</title>
+    <style>
+        body { text-align: center; margin-top: 50px; font-size: 24px; }
+        .btn { padding: 15px 30px; font-size: 20px; margin: 20px; border: none; border-radius: 8px; cursor: pointer; }
+        #playBtn { background-color: #4CAF50; color: white; }
+        #noPlayBtn { background-color: #f44336; color: white; }
+        #result { margin-top: 30px; font-size: 30px; color: #ff6700; }
+    </style>
+</head>
+<body>
+    <div>玩游戏</div>
+    <button class="btn" id="playBtn">玩</button>
+    <button class="btn" id="noPlayBtn">不玩</button>
+    <div id="result"></div>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const noPlayBtn = document.getElementById('noPlayBtn');
+        const result = document.getElementById('result');
+
+        // 玩按钮逻辑
+        playBtn.addEventListener('click', () => {
+            result.textContent = '耶';
+            playBtn.disabled = true;
+            noPlayBtn.disabled = true;
+        });
+
+        // 不玩按钮逻辑（点击后变小，周而复始）
+        noPlayBtn.addEventListener('click', () => {
+            const currentWidth = noPlayBtn.offsetWidth;
+            const currentHeight = noPlayBtn.offsetHeight;
+            noPlayBtn.style.width = (currentWidth * 0.8) + 'px';
+            noPlayBtn.style.height = (currentHeight * 0.8) + 'px';
+            noPlayBtn.style.fontSize = (parseInt(getComputedStyle(noPlayBtn).fontSize) * 0.8) + 'px';
+        });
+    </script>
+</body>
+</html>
